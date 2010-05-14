@@ -225,11 +225,11 @@ module ScribdFu
     def display_ipaper(options = {})
       <<-END
         <script type="text/javascript" src="http://www.scribd.com/javascripts/view.js"></script>
-        <div id="embedded_flash">#{options.delete(:alt)}</div>
+        <div id="embedded_flash_#{ipaper_id}">#{options.delete(:alt)}</div>
         <script type="text/javascript">
-          var scribd_doc = scribd.Document.getDoc(#{ipaper_id}, '#{ipaper_access_key}');
+          var scribd_doc_#{ipaper_id} = scribd.Document.getDoc(#{ipaper_id}, '#{ipaper_access_key}');
           #{js_params(options)}
-          scribd_doc.write("embedded_flash");
+          scribd_doc_#{ipaper_id}.write("embedded_flash_#{ipaper_id}");
         </script>
       END
     end
